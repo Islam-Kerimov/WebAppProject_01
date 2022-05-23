@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.util.Collection;
 import java.util.Map;
 
 @WebFilter(filterName = "jdbcFilter", urlPatterns = "/*")
@@ -42,13 +43,14 @@ public class JdbcFilter implements Filter {
 
             try {
 
-                connection = ConnectionUtils.getMyConnection();
+                connection = ConnectionUtils.getConnection();
                 connection.setAutoCommit(false);
 
                 MyUtils.storeConnection(servletRequest, connection);
 
                 filterChain.doFilter(servletRequest, servletResponse);
             } catch (Exception e) {
+                e.printStackTrace();
                 ConnectionUtils.rollbackQuietly(connection);
                 throw new RuntimeException(e);
             } finally {

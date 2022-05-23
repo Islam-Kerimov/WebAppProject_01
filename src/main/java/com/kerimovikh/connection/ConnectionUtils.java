@@ -4,7 +4,7 @@ import java.sql.Connection;
 
 public class ConnectionUtils {
 
-    public static Connection getMyConnection() {
+    public static Connection getConnection() {
         return PostgresConnectionUtils.getPostgresConnection();
     }
 

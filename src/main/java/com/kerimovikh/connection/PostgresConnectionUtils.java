@@ -11,6 +11,12 @@ public class PostgresConnectionUtils {
         String user = "postgres";
         String password = "kerimovikh95";
 
+        try {
+            Class.forName("org.postgresql.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
         Connection connection = null;
         try {
             connection = DriverManager.getConnection(url, user, password);
