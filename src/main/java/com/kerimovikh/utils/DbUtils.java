@@ -88,7 +88,7 @@ public class DbUtils {
         }
     }
 
-    public static Product findProduct(Connection connection, String code) {
+    public static Product findProduct(Connection connection, String code) throws SQLException {
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_PRODUCT_WITH_CODE_SQL)) {
 
@@ -105,11 +105,11 @@ public class DbUtils {
             return null;
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new SQLException(e);
         }
     }
 
-    public static void updateProduct(Connection connection, Product product) {
+    public static void updateProduct(Connection connection, Product product) throws SQLException {
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_PRODUCT_SQL)) {
 
@@ -119,11 +119,11 @@ public class DbUtils {
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new SQLException(e);
         }
     }
 
-    public static void insertProduct(Connection connection, Product product) {
+    public static void insertProduct(Connection connection, Product product) throws SQLException {
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT_PRODUCT_SQL)) {
 
@@ -133,7 +133,7 @@ public class DbUtils {
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new SQLException(e);
         }
     }
 
