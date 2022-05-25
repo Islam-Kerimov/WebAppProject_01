@@ -8,7 +8,6 @@ import jakarta.servlet.http.HttpServletRequest;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.util.Collection;
 import java.util.Map;
 
 @WebFilter(filterName = "jdbcFilter", urlPatterns = "/*")
