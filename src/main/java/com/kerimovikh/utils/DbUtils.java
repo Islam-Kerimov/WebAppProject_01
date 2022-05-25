@@ -68,7 +68,7 @@ public class DbUtils {
         }
     }
 
-    public static List<Product> queryProduct(Connection connection) {
+    public static List<Product> queryProduct(Connection connection) throws SQLException {
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_LIST_OF_PRODUCTS_SQL)) {
 
@@ -84,7 +84,7 @@ public class DbUtils {
 
             return products;
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new SQLException(e);
         }
     }
 
