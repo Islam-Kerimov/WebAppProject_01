@@ -137,7 +137,7 @@ public class DbUtils {
         }
     }
 
-    public static void deleteProduct(Connection connection, String code) {
+    public static void deleteProduct(Connection connection, String code) throws SQLException {
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(DELETE_PRODUCT_SQL)) {
 
@@ -145,7 +145,7 @@ public class DbUtils {
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new SQLException(e);
         }
     }
 }
